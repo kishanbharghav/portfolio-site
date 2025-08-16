@@ -1,144 +1,169 @@
 "use client";
-import { ArrowRight, Github } from "lucide-react";
 
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ExternalLink, Github, Shield, ShoppingBag, Trophy, Search } from "lucide-react";
 
-type TechStack = string;
-
-interface ProjectData {
-  title: string;
-  githubLink: string;
-  background: string;
-  techStack: Array<TechStack>;
-  description: string;
-}
-
-// Featured Projects Portfolio
-const PROJECTS: Array<ProjectData> = [
+const projects = [
   {
-    title: "FarmAssist AI",
-    githubLink: "https://github.com/kishanbharghav/FarmAssist-AI",
-    background:
-      "https://images.unsplash.com/photo-1574943320219-553eb213f72d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    techStack: ["Python", "AI/ML", "Agriculture", "Computer Vision"],
-    description: "AI-powered agricultural assistance system for crop monitoring and farming optimization",
+    id: 1,
+    title: "IMDB Movie Analysis",
+    description: "Comprehensive analysis of movie data and ratings using advanced data science techniques to uncover insights about film trends, box office performance, and audience preferences.",
+    image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/daec7797-2a8b-4f5a-a021-5ea99ba8a473/generated_images/imdb-movie-analysis-dashboard-interface--5e0541cf-20250816140646.jpg",
+    techStack: ["Python", "Pandas", "Matplotlib", "Seaborn", "Jupyter"],
+    githubUrl: "https://github.com/example/imdb-analysis",
+    liveUrl: null,
+    category: "Data Science"
   },
   {
-    title: "House Price Predictor",
-    githubLink: "https://github.com/kishan/house-price-predictor",
-    background:
-      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    techStack: ["Python", "ML", "Streamlit", "Pandas"],
-    description: "Machine learning model for predicting house prices with interactive Streamlit dashboard",
-  },
-  {
-    title: "ReelTalk",
-    githubLink: "https://github.com/kishan/reeltalk",
-    background:
-      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=1939&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    techStack: ["React", "Node.js", "MongoDB", "Socket.io"],
-    description: "Full-stack chatbot application for real-time movie discussions and recommendations",
-  },
-  {
+    id: 2,
     title: "SecureFileVault",
-    githubLink: "https://github.com/kishan/secure-file-vault",
-    background:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    techStack: ["C++", "Encryption", "Security", "File System"],
-    description: "Advanced file security application with encryption and access control features",
+    description: "Advanced file encryption and security platform with military-grade encryption algorithms, secure key management, and intuitive user interface for protecting sensitive documents.",
+    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=2340&auto=format&fit=crop",
+    techStack: ["Node.js", "Electron", "AES-256", "React", "SQLite"],
+    githubUrl: "https://github.com/example/secure-file-vault",
+    liveUrl: "https://securefilevault.demo.com",
+    category: "Security"
   },
   {
+    id: 3,
     title: "Simple Phishing URL Detector",
-    githubLink: "https://github.com/kishanbharghav/Simple-Phishing-URL-Detector",
-    background:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    techStack: ["Python", "Machine Learning", "Cybersecurity", "URL Analysis"],
-    description: "ML-based phishing URL detection system to identify and classify malicious websites for enhanced web security",
+    description: "Machine learning-powered cybersecurity tool that analyzes URLs and web content to detect phishing attempts and malicious websites with high accuracy rates.",
+    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2340&auto=format&fit=crop",
+    techStack: ["Python", "Scikit-learn", "Flask", "BeautifulSoup", "TensorFlow"],
+    githubUrl: "https://github.com/example/phishing-detector",
+    liveUrl: "https://phishing-detector.demo.com",
+    category: "Cybersecurity"
   },
   {
-    title: "Password Generator",
-    githubLink: "https://github.com/kishan/password-generator",
-    background:
-      "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    techStack: ["JavaScript", "HTML/CSS", "Database", "Security"],
-    description: "Web application for generating secure passwords with database storage capabilities",
+    id: 4,
+    title: "E-commerce Platform",
+    description: "Full-stack e-commerce solution with modern payment integration, inventory management, user authentication, and responsive design for optimal shopping experience.",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2340&auto=format&fit=crop",
+    techStack: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Tailwind CSS"],
+    githubUrl: "https://github.com/example/ecommerce-platform",
+    liveUrl: "https://ecommerce.demo.com",
+    category: "Web Development"
   },
   {
-    title: "IMDB Analysis",
-    githubLink: "https://github.com/kishan/imdb-analysis",
-    background:
-      "https://images.unsplash.com/photo-1489599735734-79b4af9593fa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    techStack: ["Python", "Pandas", "Data Science", "Visualization"],
-    description: "Comprehensive data analysis of IMDB movie database with statistical insights",
-  },
-  {
-    title: "Rain Predictor",
-    githubLink: "https://github.com/kishan/rain-predictor",
-    background:
-      "https://images.unsplash.com/photo-1439066615861-d1af74d74000?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    techStack: ["Flask", "Python", "API", "Weather Data"],
-    description: "Flask-based API for weather prediction using machine learning algorithms",
-  },
+    id: 5,
+    title: "Academic Excellence",
+    description: "Comprehensive showcase of academic achievements, research projects, publications, and scholarly contributions across multiple disciplines and institutions.",
+    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9d1?q=80&w=2340&auto=format&fit=crop",
+    techStack: ["React", "LaTeX", "D3.js", "Firebase", "Material-UI"],
+    githubUrl: "https://github.com/example/academic-portfolio",
+    liveUrl: "https://academic-excellence.demo.com",
+    category: "Academic"
+  }
 ];
 
-const ProjectCard = ({ githubLink, background, title, techStack, description }: ProjectData) => {
-  return (
-    <a
-      href={githubLink}
-      style={{ backgroundImage: `url(${background})` }}
-      className="before:content-[] relative min-h-auto w-full overflow-hidden rounded-[.5rem] bg-black/80 bg-cover bg-center bg-no-repeat p-5 transition-all duration-300 before:absolute before:top-0 before:left-0 before:z-10 before:block before:size-full before:bg-black/50 before:transition-all before:duration-300 hover:before:bg-black/30 sm:aspect-square md:aspect-auto md:min-h-[30rem] md:max-w-[30rem]"
-    >
-      <div className="relative z-20 flex size-full flex-col justify-end gap-8">
-        <div className="flex w-full flex-col gap-6">
-          <div className="flex flex-col gap-4">
-            <div className="text-2xl leading-[1.2] font-normal text-white md:text-3xl">
-              {title}
-            </div>
-            <div className="flex flex-wrap gap-2 mb-2">
-              {techStack.map((tech, index) => (
-                <span 
-                  key={index} 
-                  className="px-2 py-1 text-xs bg-white/20 backdrop-blur-sm rounded-md text-white border border-white/20"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-            <div className="text-sm text-white/70 leading-relaxed">
-              {description}
-            </div>
-          </div>
-          <Button variant="secondary" size="default" className="w-fit bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 hover:text-white">
-            <Github className="size-4 mr-2" />
-            View on GitHub
-            <ArrowRight className="size-4 ml-2" />
-          </Button>
-        </div>
-      </div>
-    </a>
-  );
+const categoryIcons = {
+  "Data Science": Search,
+  "Security": Shield,
+  "Cybersecurity": Shield,
+  "Web Development": ShoppingBag,
+  "Academic": Trophy
 };
 
-const GridOverlayGallery = () => {
+export const GridOverlayGallery = () => {
   return (
-    <section className="py-32 bg-[var(--color-background-dark)]">
-      <div className="container mx-auto">
-        <div className="mb-16 text-center">
-          <h2 className="text-4xl font-bold text-[var(--color-text-primary)] mb-4">
+    <section className="py-24 px-4 bg-gradient-to-br from-background via-muted/30 to-background">
+      <div className="container mx-auto max-w-7xl">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <Trophy className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-primary">Featured Work</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-blue-600 bg-clip-text text-transparent">
             Featured Projects
           </h2>
-          <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-            A showcase of my latest work in machine learning, web development, and software engineering
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            A curated collection of innovative projects spanning data science, cybersecurity, 
+            web development, and academic excellence. Each project demonstrates technical expertise 
+            and creative problem-solving.
           </p>
         </div>
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {PROJECTS.map((project, i) => (
-            <ProjectCard key={`project-${i}`} {...project} />
-          ))}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => {
+            const IconComponent = categoryIcons[project.category] || Search;
+            
+            return (
+              <Card 
+                key={project.id}
+                className="group relative overflow-hidden border hover:border-primary/50 bg-card hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:scale-[1.02]"
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-110"
+                    style={{ backgroundImage: `url(${project.image})` }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+                  
+                  <div className="absolute top-4 left-4">
+                    <Badge variant="secondary" className="bg-background/90 text-foreground border">
+                      <IconComponent className="w-3 h-3 mr-1" />
+                      {project.category}
+                    </Badge>
+                  </div>
+
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-gray-200 line-clamp-2 mb-4 overflow-hidden">
+                      {project.description.substring(0, 120)}...
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 space-y-4">
+                  <div className="flex flex-wrap gap-2">
+                    {project.techStack.slice(0, 3).map((tech) => (
+                      <Badge 
+                        key={tech} 
+                        variant="outline" 
+                        className="text-xs border-primary/30 text-primary bg-primary/5 hover:bg-primary/10 transition-colors duration-200"
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                    {project.techStack.length > 3 && (
+                      <Badge variant="outline" className="text-xs text-muted-foreground">
+                        +{project.techStack.length - 3} more
+                      </Badge>
+                    )}
+                  </div>
+
+                  <div className="flex gap-3 pt-2">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="flex-1 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
+                      onClick={() => window.open(project.githubUrl, '_blank')}
+                    >
+                      <Github className="w-4 h-4 mr-2" />
+                      Code
+                    </Button>
+                    
+                    {project.liveUrl && (
+                      <Button
+                        size="sm"
+                        className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300"
+                        onClick={() => window.open(project.liveUrl, '_blank')}
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Live Demo
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 };
-
-export { GridOverlayGallery };

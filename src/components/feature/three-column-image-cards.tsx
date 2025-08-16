@@ -5,68 +5,72 @@ import { Card } from "@/components/ui/card";
 import { GraduationCap, Code, Users } from "lucide-react";
 
 const aboutCards = [
-{
-  title: "Academic Excellence",
-  description:
-  "Pursuing Computer Science Engineering at SRM University with a CGPA of 9.69, specializing in Big Data Analytics and building a strong foundation in technology.",
-  icon: GraduationCap,
-  image:
-  "https://3000-effccef4-e772-456f-bcd3-5fef527fcd81.proxy.daytona.work/"
-},
-{
-  title: "Tech Enthusiast",
-  description:
-  "Passionate about AI, machine learning, and gaming. Fluent in English, Tamil, and Hindi, with a keen interest in exploring emerging technologies and their applications.",
-  icon: Code,
-  image:
-  "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-},
-{
-  title: "Active Contributor",
-  description:
-  "Member of Andropedia Tech Club, completed internships at CODSOFT, and actively contributes to open source projects while building practical solutions.",
-  icon: Users,
-  image:
-  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-}];
+  {
+    title: "Academic Excellence",
+    description: "Currently pursuing Computer Science Engineering at SRM University with a CGPA of 9.69, maintaining high academic standards while exploring cutting-edge technologies.",
+    icon: GraduationCap,
+    imageUrl: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/daec7797-2a8b-4f5a-a021-5ea99ba8a473/generated_images/academic-excellence-digital-illustration-9aac7cd8-20250816140638.jpg?"
+  },
+  {
+    title: "Tech Enthusiast",
+    description: "Passionate about AI/ML development, game programming, and full-stack technologies. Proficient in multiple programming languages with a keen interest in emerging tech trends.",
+    icon: Code,
+    imageUrl: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=500&q=80"
+  },
+  {
+    title: "Active Contributor",
+    description: "Active member of technical clubs and communities, with hands-on experience through internships and collaborative projects. Always eager to learn and share knowledge.",
+    icon: Users,
+    imageUrl: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&q=80"
+  }
+];
 
-
-const ThreeColumnImageCards = () => {
+export const ThreeColumnImageCards = () => {
   return (
     <section className="py-32 bg-background">
-      <div className="container mx-auto">
-        <div className="m-auto mb-24 max-w-xl text-center">
-          <h2 className="mb-6 text-3xl font-semibold lg:text-5xl font-display text-text-primary">
-            About Me
-          </h2>
-          <p className="m-auto max-w-3xl text-lg lg:text-xl text-text-secondary font-body">
-            A passionate Computer Science Engineering student at SRM University with a strong foundation in technology, 
-            diverse interests, and a commitment to continuous learning and innovation.
+      <div className="container max-w-7xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-foreground mb-6">About Me</h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Exploring the intersection of technology and innovation through academics, 
+            practical experience, and community engagement.
           </p>
         </div>
-        <div className="mt-11 grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {aboutCards.map((card, index) =>
-          <Card key={index} className="border-border-subtle bg-surface hover:bg-surface/80 transition-colors duration-300 pt-0 overflow-hidden">
-              <div className="relative">
-                <img
-                src={card.image}
-                alt={card.title}
-                className="aspect-video w-full object-cover" />
-
-                <div className="absolute top-4 right-4 bg-accent-blue/20 backdrop-blur-sm rounded-full p-2">
-                  <card.icon className="w-5 h-5 text-accent-blue" />
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {aboutCards.map((card, index) => {
+            const IconComponent = card.icon;
+            return (
+              <Card 
+                key={index} 
+                className="group overflow-hidden border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-card"
+              >
+                <div className="relative">
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={card.imageUrl}
+                      alt={card.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="absolute top-4 right-4 w-12 h-12 bg-primary/90 backdrop-blur-sm rounded-full flex items-center justify-center">
+                    <IconComponent className="w-6 h-6 text-primary-foreground" />
+                  </div>
                 </div>
-              </div>
-              <div className="p-6">
-                <h3 className="mb-3 font-semibold text-lg font-display text-text-primary">{card.title}</h3>
-                <p className="text-text-secondary font-body leading-relaxed">{card.description}</p>
-              </div>
-            </Card>
-          )}
+                
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-card-foreground mb-3 group-hover:text-primary transition-colors duration-200">
+                    {card.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {card.description}
+                  </p>
+                </div>
+              </Card>
+            );
+          })}
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
-
-export { ThreeColumnImageCards };
